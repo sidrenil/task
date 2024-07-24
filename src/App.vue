@@ -1,26 +1,19 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="flex">
+    <Sidebar v-if="isHomePage" />
+    <div class="flex-1">
+      <router-view />
+    </div>
+  </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
+import { computed } from "vue";
+import { useRoute } from "vue-router";
+import Sidebar from "./components/Sidebar.vue";
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+const route = useRoute();
+const isHomePage = computed(() => route.path === "/");
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style scoped></style>
