@@ -26,27 +26,32 @@ import axios from "axios";
 
 const todos = ref([]);
 
-// Load todos from Local Storage on component mount
 onMounted(() => {
   const storedTodos = JSON.parse(localStorage.getItem("todos")) || [];
   todos.value = storedTodos;
+  fetchMissingTodos(storedTodos);
 });
 
-// Fetch todos from API and store in todos array
-onMounted(async () => {
-  const userId = 1; // Use the user ID dynamically if needed
+async function fetchMissingTodos(storedTodos) {
+  const userId = 1;
   try {
     const response = await axios.get(
       `https://jsonplaceholder.typicode.com/users/${userId}/todos`
     );
-    todos.value = response.data;
-    localStorage.setItem("todos", JSON.stringify(response.data)); // Save API data to local storage
+    const apiTodos = response.data;
+
+    const mergedTodos = apiTodos.map((apiTodo) => {
+      const storedTodo = storedTodos.find((todo) => todo.id === apiTodo.id);
+      return storedTodo ? storedTodo : apiTodo;
+    });
+
+    todos.value = mergedTodos;
+    localStorage.setItem("todos", JSON.stringify(mergedTodos));
   } catch (error) {
     console.error("Error fetching todos:", error);
   }
-});
+}
 
-// Update todo in local storage
 function updateTodo(updatedTodo) {
   const storedTodos = JSON.parse(localStorage.getItem("todos")) || [];
   const index = storedTodos.findIndex((todo) => todo.id === updatedTodo.id);
@@ -58,10 +63,4 @@ function updateTodo(updatedTodo) {
 }
 </script>
 
-<style scoped>
-/* Define styles for completed todos */
-.completed {
-  color: gray;
-  text-decoration: line-through;
-}
-</style>
+<style scoped></style>

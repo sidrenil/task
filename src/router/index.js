@@ -4,6 +4,7 @@ import UserDetails from "../views/UserDetails.vue";
 import Todos from "@/views/Todos.vue";
 import Albums from "@/views/Albums.vue";
 import Posts from "@/views/Posts.vue";
+import AlbumPhotos from "@/views/AlbumPhotos.vue";
 
 const routes = [
   {
@@ -31,6 +32,11 @@ const routes = [
         path: "albums",
         name: "Albums",
         component: Albums,
+      },
+      {
+        path: "/album-photos/:albumId",
+        name: "AlbumPhotos",
+        component: AlbumPhotos,
       },
       {
         path: "",

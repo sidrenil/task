@@ -1,6 +1,5 @@
 <template>
   <div class="p-5 bg-gray-100">
-    <!-- Kullanıcı verisi olup olmadığını kontrol et -->
     <div v-if="user" class="flex items-center mb-4">
       <img
         :src="`https://i.pravatar.cc/150?img=${user.id}`"
