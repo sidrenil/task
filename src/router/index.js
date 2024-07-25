@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
 import UserList from "../components/UserList.vue";
 import UserDetails from "../views/UserDetails.vue";
-import Todos from "@/views/Todos.vue";
-import Albums from "@/views/Albums.vue";
-import Posts from "@/views/Posts.vue";
-import AlbumPhotos from "@/views/AlbumPhotos.vue";
+
+import Todos from "../views/users/[id]/Todos.vue";
+import Albums from "../views/users/[id]/Albums.vue";
+import Posts from "../views/users/[id]/Posts.vue";
+import AlbumPhotos from "@/views/users/[id]/albums/AlbumPhotos.vue";
 
 const routes = [
   {
@@ -34,10 +35,11 @@ const routes = [
         component: Albums,
       },
       {
-        path: "/album-photos/:albumId",
-        name: "AlbumPhotos",
+        path: "albums/:albumId",
+        name: "UserAlbumPhotos",
         component: AlbumPhotos,
       },
+
       {
         path: "",
         redirect: "todos",

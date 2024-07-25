@@ -1,50 +1,80 @@
 <template>
   <div class="p-5 ml-5">
-    <h1 class="text-2xl font-bold mb-5 mt-2">All users</h1>
-    <div class="flex flex-wrap gap-5">
-      <div
+    <h1 class="text-2xl font-bold mb-5 mt-2">All Users</h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+      <router-link
+        :to="{ name: 'Todos', params: { id: user.id } }"
         v-for="user in users"
         :key="user.id"
-        class="border p-4 rounded shadow bg-white w-full lg:w-1/3 xl:w-1/4 text-left transition-transform transform hover:scale-105 hover:shadow-lg"
+        class="border border-graylight hover:shadow-2xl duration-300 rounded-xl p-6 space-y-4 flex flex-col"
       >
-        <router-link
-          :to="{ name: 'UserDetails', params: { id: user.id } }"
-          class="no-underline text-gray-700"
-        >
-          <div class="flex items-start">
+        <div class="flex flex-col lg:flex-row lg:space-x-4">
+          <div class="overflow-hidden rounded-full mb-2">
             <img
               :src="`https://i.pravatar.cc/150?img=${user.id}`"
               alt="User avatar"
               class="w-16 h-16 rounded-full"
             />
-            <div class="ml-4 flex-1">
-              <div class="text-lg font-bold mb-1 truncate">{{ user.name }}</div>
-              <div class="text-gray-600 mb-1 truncate">{{ user.email }}</div>
-              <div class="text-gray-600 truncate">{{ user.phone }}</div>
-            </div>
           </div>
-          <div class="text-gray-600 mt-2">
-            <div class="font-semibold">Location:</div>
-            <div class="truncate">
-              {{ user.address.street }}, {{ user.address.city }}
-            </div>
-          </div>
-          <div class="text-gray-600 mt-2">
-            <div class="font-semibold">Company:</div>
-            <div class="truncate">{{ user.company.name }}</div>
-          </div>
-          <div class="text-gray-600 mt-2">
-            <div class="font-semibold">Website:</div>
-            <a
-              :href="`http://${user.website}`"
-              target="_blank"
-              class="text-blue-600 hover:underline"
+          <div class="flex flex-col justify-center">
+            <p class="font-medium text-lg text-blackgray">{{ user.name }}</p>
+            <p
+              class="text-gray text-[15px] xl:text-sm font-normal overflow-hidden"
             >
-              {{ user.website }}
-            </a>
+              {{ user.email }}
+            </p>
+            <p class="text-gray text-[15px] xl:text-sm font-normal">
+              {{ user.phone }}
+            </p>
           </div>
-        </router-link>
-      </div>
+        </div>
+
+        <div class="flex flex-col space-y-4">
+          <div class="flex flex-col space-y-1">
+            <div class="flex flex-row space-x-2">
+              <icons.IconMapPinHeart
+                class="text-blackgray"
+                :size="18"
+                stroke-width="2"
+              />
+              <span class="font-medium text-sm">Location</span>
+            </div>
+            <div class="text-gray font-light flex flex-col text-sm">
+              <div>{{ user.address.street }}, {{ user.address.suite }}</div>
+              <div class="">
+                {{ user.address.city }}, {{ user.address.zipcode }}
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col space-y-1">
+            <div class="flex flex-row space-x-2">
+              <icons.IconBuildingSkyscraper
+                class="text-blackgray"
+                :size="18"
+                stroke-width="2"
+              />
+              <span class="font-medium text-sm">Company</span>
+            </div>
+            <div class="text-gray font-light flex flex-col text-sm">
+              {{ user.company.name }}
+            </div>
+          </div>
+          <div class="flex flex-col space-y-1">
+            <div class="flex flex-row space-x-2">
+              <icons.IconWorldShare
+                class="text-blackgray"
+                :size="18"
+                stroke-width="2"
+              />
+              <span class="font-medium text-sm">Website</span>
+            </div>
+            <div class="text-gray font-light flex flex-col text-sm">
+              {{ user.website }}
+            </div>
+          </div>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -66,52 +96,3 @@ onMounted(() => {
     });
 });
 </script>
-
-<style scoped>
-.border {
-  background-color: #ffffff;
-}
-
-.border:hover {
-  background-color: #f8f8f8;
-}
-
-img {
-  margin-right: 1rem;
-}
-
-.ml-4 {
-  margin-left: 1rem;
-}
-
-.flex-1 {
-  flex: 1;
-  min-width: 0;
-}
-
-.truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.text-lg {
-  font-size: 1.125rem;
-}
-
-.font-bold {
-  font-weight: 700;
-}
-
-.text-gray-600 {
-  color: #4a5568;
-}
-
-.text-blue-600 {
-  color: #3182ce;
-}
-
-.hover\:shadow-lg:hover {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-</style>

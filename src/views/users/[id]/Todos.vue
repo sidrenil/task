@@ -1,9 +1,12 @@
 <template>
   <div>
+    <GoBackHome />
     <h1 class="text-2xl font-bold mb-5">Todos</h1>
+
     <div v-if="todos.length === 0" class="text-gray-600">
       No todos available.
     </div>
+
     <ul v-else>
       <li v-for="todo in todos" :key="todo.id" class="mb-2">
         <input
@@ -22,18 +25,21 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { useRoute } from "vue-router";
+import GoBackHome from "@/components/GoBackHome.vue";
 import axios from "axios";
 
+const route = useRoute();
+const userId = route.params.id;
 const todos = ref([]);
 
 onMounted(() => {
-  const storedTodos = JSON.parse(localStorage.getItem("todos")) || [];
+  const storedTodos = JSON.parse(localStorage.getItem(`todos-${userId}`)) || [];
   todos.value = storedTodos;
   fetchMissingTodos(storedTodos);
 });
 
 async function fetchMissingTodos(storedTodos) {
-  const userId = 1;
   try {
     const response = await axios.get(
       `https://jsonplaceholder.typicode.com/users/${userId}/todos`
@@ -46,19 +52,19 @@ async function fetchMissingTodos(storedTodos) {
     });
 
     todos.value = mergedTodos;
-    localStorage.setItem("todos", JSON.stringify(mergedTodos));
+    localStorage.setItem(`todos-${userId}`, JSON.stringify(mergedTodos));
   } catch (error) {
     console.error("Error fetching todos:", error);
   }
 }
 
 function updateTodo(updatedTodo) {
-  const storedTodos = JSON.parse(localStorage.getItem("todos")) || [];
+  const storedTodos = JSON.parse(localStorage.getItem(`todos-${userId}`)) || [];
   const index = storedTodos.findIndex((todo) => todo.id === updatedTodo.id);
 
   if (index !== -1) {
     storedTodos[index] = updatedTodo;
-    localStorage.setItem("todos", JSON.stringify(storedTodos));
+    localStorage.setItem(`todos-${userId}`, JSON.stringify(storedTodos));
   }
 }
 </script>

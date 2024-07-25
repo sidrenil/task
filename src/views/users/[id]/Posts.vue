@@ -1,4 +1,5 @@
 <template>
+  <GoBackHome />
   <div class="posts-container">
     <h1 class="text-2xl font-bold mb-5">Posts</h1>
     <div v-if="posts.length === 0" class="text-gray-600">
@@ -23,8 +24,13 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { useRoute } from "vue-router";
 import axios from "axios";
-import Modal from "../components/Modal.vue";
+import Modal from "@/components/Modal.vue";
+import GoBackHome from "@/components/GoBackHome.vue";
+
+const route = useRoute();
+const userId = route.params.id;
 
 const posts = ref([]);
 const showModal = ref(false);
@@ -33,7 +39,7 @@ const selectedPost = ref(null);
 onMounted(async () => {
   try {
     const response = await axios.get(
-      "https://jsonplaceholder.typicode.com/posts?userId=1"
+      `https://jsonplaceholder.typicode.com/posts?userId=${userId}`
     );
     posts.value = response.data;
   } catch (error) {

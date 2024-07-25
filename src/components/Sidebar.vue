@@ -1,5 +1,8 @@
 <template>
-  <div class="pt-6 bg-gray-100 w-64 h-screen border-r border-gray-200">
+  <div
+    class="pt-6 bg-gray-100 w-64 h-screen border-r border-gray-200"
+    style="position: sticky; top: 0; height: 100vh; overflow-y: auto"
+  >
     <router-link
       to="/"
       class="sidebar-link text-purple-600 bg-white rounded-md text-lg font-medium flex items-center"

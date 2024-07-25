@@ -1,5 +1,8 @@
 <template>
-  <div class="p-5 bg-gray-100">
+  <div
+    class="pt-6 bg-gray-100 w-64 h-screen border-r border-gray-200"
+    style="position: sticky; top: 0; height: 100vh; overflow-y: auto"
+  >
     <div v-if="user" class="flex items-center mb-4">
       <img
         :src="`https://i.pravatar.cc/150?img=${user.id}`"
