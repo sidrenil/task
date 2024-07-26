@@ -25,6 +25,29 @@
         :class="{ 'bg-white': $route.name === 'Todos' }"
       >
         <div v-if="$route.name === 'Todos'" class="active-indicator"></div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-checkup-list mr-2"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="#4f359b"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path
+            d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"
+          />
+          <path
+            d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"
+          />
+          <path d="M9 14h.01" />
+          <path d="M9 17h.01" />
+          <path d="M12 16l1 1l3 -3" />
+        </svg>
         Todos
       </router-link>
 
@@ -35,6 +58,25 @@
         :class="{ 'bg-white': $route.name === 'Posts' }"
       >
         <div v-if="$route.name === 'Posts'" class="active-indicator"></div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-notebook mr-2"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="#4f359b"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path
+            d="M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-11a1 1 0 0 1 -1 -1v-14a1 1 0 0 1 1 -1m3 0v18"
+          />
+          <path d="M13 8l2 0" />
+          <path d="M13 12l2 0" />
+        </svg>
         Posts
       </router-link>
 
@@ -45,6 +87,28 @@
         :class="{ 'bg-white': $route.name === 'Albums' }"
       >
         <div v-if="$route.name === 'Albums'" class="active-indicator"></div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-photo-heart mr-2"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="#4f359b"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M15 8h.01" />
+          <path
+            d="M11.5 21h-5.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5"
+          />
+          <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1.5 1.5" />
+          <path
+            d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z"
+          />
+        </svg>
         Albums
       </router-link>
     </div>
@@ -79,13 +143,14 @@ hr {
   padding-left: 32px;
   position: relative;
   text-decoration: none;
-  color: purple;
+  color: gray;
   line-height: 1.2;
   margin-bottom: 15px;
 }
 
 .link-item:hover {
   background-color: #f3f4f6;
+  color: #4f359b;
 }
 
 .active-indicator {
@@ -102,5 +167,6 @@ hr {
 
 .link-item.bg-white {
   background-color: white;
+  color: #4f359b;
 }
 </style>

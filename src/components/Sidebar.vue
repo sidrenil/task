@@ -91,7 +91,7 @@
 
 .sidebar-link {
   position: relative;
-  padding: 10px 20px; /* Arka planı kalınlaştırmak için padding değeri artırıldı */
+  padding: 10px 20px;
   background-color: white;
   display: flex;
   align-items: center;
@@ -115,7 +115,7 @@
 }
 
 .text-md {
-  font-size: 18px; /* Yazı boyutunu biraz büyüt */
-  font-weight: bold; /* Kalınlaştır */
+  font-size: 18px;
+  font-weight: bold;
 }
 </style>
