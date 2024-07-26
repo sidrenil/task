@@ -129,7 +129,7 @@ const props = defineProps({
 <style scoped>
 hr {
   border-top: 2px solid #e5e7eb;
-  margin-bottom: 45px;
+  margin-bottom: 55px;
 }
 
 .email {
