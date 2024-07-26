@@ -1,7 +1,6 @@
 <template>
-  <div>
+  <div class="p-5 ml-5">
     <GoBackHome />
-    <h1 class="text-2xl font-bold mb-5">Albums</h1>
 
     <div v-if="albums.length === 0" class="text-gray-600">
       No albums available.
@@ -9,7 +8,7 @@
 
     <div v-else>
       <div
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6"
       >
         <router-link
           :to="{
@@ -18,23 +17,26 @@
           }"
           v-for="album in albums"
           :key="album.id"
-          class="border border-gray-300 rounded-lg overflow-hidden hover:shadow-xl transition"
+          class="album-card border border-graylight hover:shadow-2xl duration-300 rounded-xl p-6 space-y-4 flex flex-col"
         >
-          <div class="relative">
-            <div class="relative w-full h-40 bg-gray-200 overflow-hidden">
-              <div class="absolute inset-0 grid grid-cols-2 gap-1 p-1">
+          <div class="relative flex flex-col h-full">
+            <div class="relative w-full h-48 bg-gray-200 overflow-hidden">
+              <div
+                class="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1 p-1"
+              >
                 <img
                   v-for="photo in getAlbumPhotos(album.id)"
                   :key="photo.id"
                   :src="photo.url"
                   :alt="photo.title"
-                  class="w-full h-full object-cover rounded-lg"
+                  class="w-full h-full object-cover"
                 />
               </div>
             </div>
-
-            <div class="p-4 bg-white">
-              <h2 class="font-bold text-lg">{{ album.title }}</h2>
+            <div class="p-4 bg-white flex flex-col justify-center">
+              <h2 class="font-bold text-lg text-blackgray">
+                {{ album.title }}
+              </h2>
             </div>
           </div>
         </router-link>
@@ -78,4 +80,12 @@ function getAlbumPhotos(albumId) {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.album-card {
+  height: 350px;
+}
+
+.album-card img {
+  object-fit: cover;
+}
+</style>
