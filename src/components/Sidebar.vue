@@ -1,7 +1,14 @@
 <template>
   <div
     class="pt-6 bg-gray-100 w-64 h-screen border-r border-gray-200"
-    style="position: sticky; top: 0; height: 100vh; overflow-y: auto"
+    style="
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    "
   >
     <router-link
       to="/"
@@ -29,8 +36,8 @@
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="icon icon-tabler icon-tabler-users ml-2 mr-3 text-purple-600"
-        width="32"
-        height="32"
+        width="24"
+        height="24"
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor"
@@ -44,25 +51,50 @@
         <path d="M16 3.13a4 4 0 0 1 0 7.75" />
         <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
       </svg>
-
-      <span class="text-purple-600">Users</span>
+      <span class="text-purple-600 text-md">Users</span>
     </router-link>
+
+    <div class="sidebar-bottom">
+      <span class="sidebar-line"></span>
+      <img src="../img/image.png" alt="Sidebar Image" class="sidebar-image" />
+      <span class="text-gray2 sidebar-text">N2Mobil</span>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.router-link {
+.sidebar-bottom {
+  margin-top: auto;
+  padding: 10px 20px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: transparent;
+  margin-bottom: 15px;
 }
 
-.icon-tabler-player-stop-filled {
-  margin: 0;
-  padding: 0;
+.sidebar-line {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background-color: #e5e7eb;
+  z-index: 1;
 }
 
-.icon-tabler-users {
-  margin-left: 0.5rem;
-  margin-right: 0.75rem;
+.sidebar-image {
+  width: 40px;
+  height: auto;
+  margin-right: 5px;
+  z-index: 2;
+}
+
+.sidebar-text {
+  font-size: 20px;
+  color: #6b7280;
+  font-weight: bold;
+  z-index: 2;
 }
 </style>
