@@ -14,30 +14,13 @@
       to="/"
       class="sidebar-link text-purple-600 bg-white rounded-md text-lg font-medium flex items-center"
     >
+      <div class="sidebar-background"></div>
+
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="icon icon-tabler icon-tabler-player-stop-filled"
-        width="44"
-        height="44"
-        viewBox="12 0 24 24"
-        stroke-width="1.5"
-        stroke="#2c3e50"
-        fill="none"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path
-          d="M17 4h-10a3 3 0 0 0 -3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3 -3v-10a3 3 0 0 0 -3 -3z"
-          stroke-width="0"
-          fill="currentColor"
-        />
-      </svg>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="icon icon-tabler icon-tabler-users ml-2 mr-3 text-purple-600"
-        width="24"
-        height="24"
+        class="icon icon-tabler icon-tabler-users ml-4 mr-3 text-purple-600 icon-size"
+        width="28"
+        height="28"
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor"
@@ -104,5 +87,35 @@
   font-size: 20px;
   color: #6b7280;
   font-weight: bold;
+}
+
+.sidebar-link {
+  position: relative;
+  padding: 10px 20px; /* Arka planı kalınlaştırmak için padding değeri artırıldı */
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background-color: #7e3af2;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border: 2px solid #7e3af2;
+}
+
+.icon-size {
+  width: 28px;
+  height: 28px;
+}
+
+.text-md {
+  font-size: 18px; /* Yazı boyutunu biraz büyüt */
+  font-weight: bold; /* Kalınlaştır */
 }
 </style>
