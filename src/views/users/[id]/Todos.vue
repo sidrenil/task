@@ -1,19 +1,20 @@
 <template>
   <div>
     <GoBackHome />
-    <h1 class="text-2xl font-bold mb-5">Todos</h1>
+    <h1 class="text-2xl font-bold mb-20"></h1>
 
     <div v-if="todos.length === 0" class="text-gray-600">
       No todos available.
     </div>
 
     <ul v-else>
-      <li v-for="todo in todos" :key="todo.id" class="mb-2">
+      <li v-for="todo in todos" :key="todo.id" class="mb-2 ml-5 mt-6">
         <input
           type="checkbox"
           :id="'todo-' + todo.id"
           v-model="todo.completed"
           @change="updateTodo(todo)"
+          class="checkbox mr-10"
         />
         <label :for="'todo-' + todo.id" :class="{ completed: todo.completed }">
           {{ todo.title }}
@@ -69,4 +70,11 @@ function updateTodo(updatedTodo) {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.checkbox {
+  transform: scale(1.5);
+  margin-right: 15px;
+  vertical-align: middle;
+  accent-color: #4f359b;
+}
+</style>
