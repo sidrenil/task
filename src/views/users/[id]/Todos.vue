@@ -8,7 +8,7 @@
     </div>
 
     <ul v-else>
-      <li v-for="todo in todos" :key="todo.id" class="mb-2 ml-5 mt-6">
+      <li v-for="todo in todos" :key="todo.id" class="mb-2 ml-5 mt-6 pt-3">
         <input
           type="checkbox"
           :id="'todo-' + todo.id"
@@ -75,6 +75,6 @@ function updateTodo(updatedTodo) {
   transform: scale(1.5);
   margin-right: 15px;
   vertical-align: middle;
-  accent-color: #4f359b;
+  accent-color: #6750a4;
 }
 </style>

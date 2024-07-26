@@ -1,7 +1,14 @@
 <template>
   <div
     class="pt-6 bg-gray-100 w-64 h-screen border-r border-gray-200"
-    style="position: sticky; top: 0; height: 100vh; overflow-y: auto"
+    style="
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    "
   >
     <div v-if="user" class="flex items-center mb-4 px-5">
       <img
@@ -112,6 +119,14 @@
         Albums
       </router-link>
     </div>
+
+    <div class="sidebar-bottom">
+      <span class="sidebar-line"></span>
+      <div class="sidebar-content">
+        <img src="../img/image.png" alt="Sidebar Image" class="sidebar-image" />
+        <span class="text-gray2 sidebar-text">N2Mobil</span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -125,7 +140,6 @@ const props = defineProps({
   },
 });
 </script>
-
 <style scoped>
 hr {
   border-top: 2px solid #e5e7eb;
@@ -158,7 +172,7 @@ hr {
   left: 0;
   top: 0;
   height: 100%;
-  width: 4px;
+  width: 7px;
   background-color: #612dbb;
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
@@ -168,5 +182,46 @@ hr {
 .link-item.bg-white {
   background-color: white;
   color: #4f359b;
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: transparent;
+  margin-bottom: 15px;
+}
+
+.sidebar-line {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background-color: #e5e7eb;
+  z-index: 1;
+  margin-bottom: 10px;
+}
+
+.sidebar-content {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  z-index: 2;
+}
+
+.sidebar-image {
+  width: 40px;
+  height: auto;
+  margin-right: 5px;
+}
+
+.sidebar-text {
+  font-size: 20px;
+  color: #6b7280;
+  font-weight: bold;
 }
 </style>

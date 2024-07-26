@@ -23,7 +23,7 @@
         height="28"
         viewBox="0 0 24 24"
         stroke-width="1.5"
-        stroke="currentColor"
+        stroke="#4f359b"
         fill="none"
         stroke-linecap="round"
         stroke-linejoin="round"
@@ -34,7 +34,7 @@
         <path d="M16 3.13a4 4 0 0 1 0 7.75" />
         <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
       </svg>
-      <span class="text-purple-600 text-md">Users</span>
+      <span class="user text-md">Users</span>
     </router-link>
 
     <div class="sidebar-bottom">
@@ -102,11 +102,11 @@
   left: 0;
   top: 0;
   bottom: 0;
-  width: 6px;
-  background-color: #7e3af2;
+  width: 7px;
+  background-color: #4f359b;
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
-  border: 2px solid #7e3af2;
+  border: 2px solid #4f359b;
 }
 
 .icon-size {
@@ -117,5 +117,8 @@
 .text-md {
   font-size: 18px;
   font-weight: bold;
+}
+.user {
+  color: #4f359b;
 }
 </style>
