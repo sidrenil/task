@@ -56,8 +56,10 @@
 
     <div class="sidebar-bottom">
       <span class="sidebar-line"></span>
-      <img src="../img/image.png" alt="Sidebar Image" class="sidebar-image" />
-      <span class="text-gray2 sidebar-text">N2Mobil</span>
+      <div class="sidebar-content">
+        <img src="../img/image.png" alt="Sidebar Image" class="sidebar-image" />
+        <span class="text-gray2 sidebar-text">N2Mobil</span>
+      </div>
     </div>
   </div>
 </template>
@@ -82,19 +84,25 @@
   height: 2px;
   background-color: #e5e7eb;
   z-index: 1;
+  margin-bottom: 10px;
+}
+
+.sidebar-content {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  z-index: 2;
 }
 
 .sidebar-image {
   width: 40px;
   height: auto;
   margin-right: 5px;
-  z-index: 2;
 }
 
 .sidebar-text {
   font-size: 20px;
   color: #6b7280;
   font-weight: bold;
-  z-index: 2;
 }
 </style>
