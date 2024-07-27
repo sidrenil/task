@@ -1,10 +1,9 @@
 <template>
   <GoBackHome />
   <div class="pt-4 ml-5">
-    <div v-if="albums.length === 0" class="text-gray-600">
-      No albums available.
+    <div v-if="loading" class="flex justify-center items-center h-full">
+      <div class="spinner"></div>
     </div>
-
     <div v-else>
       <div
         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 pt-4"
@@ -53,6 +52,7 @@ const userId = parseInt(route.params.id);
 
 const albums = ref([]);
 const albumPhotos = ref({});
+const loading = ref(true);
 
 onMounted(async () => {
   try {
@@ -69,6 +69,8 @@ onMounted(async () => {
     }
   } catch (error) {
     console.error("Error fetching albums or photos:", error);
+  } finally {
+    loading.value = false;
   }
 });
 
@@ -84,5 +86,24 @@ function getAlbumPhotos(albumId) {
 
 .album-card img {
   object-fit: cover;
+}
+
+.spinner {
+  border: 4px solid rgb(79, 53, 155);
+  border-radius: 50%;
+  border-top: 4px solid #4f359b;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+  margin: 20px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>

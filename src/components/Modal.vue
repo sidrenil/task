@@ -29,9 +29,10 @@
 
         <div class="comments-section">
           <h2 class="section-title">COMMENTS</h2>
-          <div v-if="comments.length === 0" class="text-gray-600">
-            No comments available.
+          <div v-if="loading" class="spinner-container">
+            <div class="spinner"></div>
           </div>
+
           <div v-else>
             <div v-for="comment in comments" :key="comment.id" class="comment">
               <img
@@ -50,7 +51,6 @@
     </div>
   </div>
 </template>
-
 <script setup>
 import { ref, watch } from "vue";
 import axios from "axios";
@@ -63,6 +63,7 @@ const props = defineProps({
 const emits = defineEmits(["close"]);
 
 const comments = ref([]);
+const loading = ref(true);
 
 watch(
   () => props.post,
@@ -78,6 +79,8 @@ watch(
         }));
       } catch (error) {
         console.error("Error fetching comments:", error);
+      } finally {
+        loading.value = false;
       }
     }
   },
@@ -88,7 +91,6 @@ function close() {
   emits("close");
 }
 </script>
-
 <style scoped>
 .modal-overlay {
   position: fixed;
@@ -234,5 +236,30 @@ function close() {
   overflow-wrap: break-word;
   word-break: break-word;
   margin-bottom: 10px;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.spinner {
+  border: 4px solid rgb(79, 53, 155);
+  border-radius: 50%;
+  border-top: 4px solid #4f359b;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>

@@ -3,24 +3,31 @@
     <GoBackHome />
     <h1 class="text-2xl font-bold mb-20"></h1>
 
-    <div v-if="todos.length === 0" class="text-gray-600">
-      No todos available.
+    <div v-if="loading" class="flex justify-center items-center h-screen">
+      <div class="spinner"></div>
     </div>
 
-    <ul v-else>
-      <li v-for="todo in todos" :key="todo.id" class="mb-2 ml-5 mt-6 pt-3">
-        <input
-          type="checkbox"
-          :id="'todo-' + todo.id"
-          v-model="todo.completed"
-          @change="updateTodo(todo)"
-          class="checkbox mr-10"
-        />
-        <label :for="'todo-' + todo.id" :class="{ completed: todo.completed }">
-          {{ todo.title }}
-        </label>
-      </li>
-    </ul>
+    <div v-else>
+      <div v-if="todos.length === 0" class="text-gray-600"></div>
+
+      <ul v-else>
+        <li v-for="todo in todos" :key="todo.id" class="mb-2 ml-5 mt-6 pt-3">
+          <input
+            type="checkbox"
+            :id="'todo-' + todo.id"
+            v-model="todo.completed"
+            @change="updateTodo(todo)"
+            class="checkbox mr-10"
+          />
+          <label
+            :for="'todo-' + todo.id"
+            :class="{ completed: todo.completed }"
+          >
+            {{ todo.title }}
+          </label>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -33,7 +40,7 @@ import axios from "axios";
 const route = useRoute();
 const userId = route.params.id;
 const todos = ref([]);
-
+const loading = ref(true);
 onMounted(() => {
   const storedTodos = JSON.parse(localStorage.getItem(`todos-${userId}`)) || [];
   todos.value = storedTodos;
@@ -56,6 +63,8 @@ async function fetchMissingTodos(storedTodos) {
     localStorage.setItem(`todos-${userId}`, JSON.stringify(mergedTodos));
   } catch (error) {
     console.error("Error fetching todos:", error);
+  } finally {
+    loading.value = false;
   }
 }
 
@@ -76,5 +85,23 @@ function updateTodo(updatedTodo) {
   margin-right: 15px;
   vertical-align: middle;
   accent-color: #6750a4;
+}
+
+.spinner {
+  border: 4px solid rgb(79, 53, 155);
+  border-radius: 50%;
+  border-top: 4px solid #4f359b;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>

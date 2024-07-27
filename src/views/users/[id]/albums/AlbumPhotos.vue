@@ -27,9 +27,11 @@
       Go Albums
     </div>
 
-    <div v-if="photos.length === 0" class="text-gray-600">
-      No photos available.
+    <div v-if="loading" class="flex justify-center items-center h-full">
+      <div class="spinner"></div>
     </div>
+
+    <div v-else-if="photos.length === 0" class="text-gray-600"></div>
 
     <div
       v-else
@@ -51,6 +53,7 @@ const route = useRoute();
 const router = useRouter();
 const albumId = parseInt(route.params.albumId);
 const photos = ref([]);
+const loading = ref(true);
 
 function goAlbums() {
   router.push({ name: "Albums" });
@@ -64,6 +67,8 @@ onMounted(async () => {
     photos.value = response.data;
   } catch (error) {
     console.error("Error fetching photos:", error);
+  } finally {
+    loading.value = false;
   }
 });
 </script>
@@ -84,5 +89,24 @@ onMounted(async () => {
   height: auto;
   max-height: 150px;
   object-fit: cover;
+}
+
+.spinner {
+  border: 4px solid rgb(79, 53, 155);
+  border-radius: 50%;
+  border-top: 4px solid #4f359b;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+  margin: 20px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
