@@ -16,7 +16,7 @@
         alt="User avatar"
         class="w-12 h-12 rounded-full mr-4"
       />
-      <div>
+      <div class="user-info">
         <div class="text-sm font-bold">{{ user.name }}</div>
         <div class="text-gray-600 email text-sm">{{ user.email }}</div>
       </div>
@@ -140,6 +140,7 @@ const props = defineProps({
   },
 });
 </script>
+
 <style scoped>
 hr {
   border-top: 2px solid #e5e7eb;
@@ -148,6 +149,24 @@ hr {
 
 .email {
   text-decoration: underline;
+  overflow-wrap: break-word;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  white-space: normal;
+  margin-left: 10px;
+}
+
+.user-info div {
+  white-space: normal;
 }
 
 .link-item {
