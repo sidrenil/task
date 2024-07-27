@@ -7,30 +7,34 @@
     </div>
     <div v-else>
       <div v-for="post in posts" :key="post.id" class="post">
-        <h2 class="post-title">{{ post.title }}</h2>
-        <p class="post-body">{{ post.body }}</p>
+        <div class="post-content">
+          <h2 class="post-title">{{ post.title }}</h2>
+          <p class="post-body">{{ post.body }}</p>
+        </div>
         <div class="post-actions">
           <button @click="openModal(post)" class="see-more-button">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="icon icon-tabler icon-tabler-crop-1-1 mr-7"
-              width="44"
-              height="44"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="#4f359b"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path
-                d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"
-              />
-              <path d="M5 12l14 0" />
-              <path d="M13 18l6 -6" />
-              <path d="M13 6l6 6" />
-            </svg>
-            See More
+            <span class="see-more-content">
+              See More
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-square-rounded-arrow-right"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke-width="2.5"
+                stroke="#4f359b"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 16l4 -4l-4 -4" />
+                <path d="M8 12h8" />
+                <path
+                  d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z"
+                />
+              </svg>
+            </span>
           </button>
         </div>
         <hr class="post-divider" />
@@ -76,6 +80,7 @@ function closeModal() {
   selectedPost.value = null;
 }
 </script>
+
 <style scoped>
 .posts-container {
   padding: 20px;
@@ -108,7 +113,8 @@ function closeModal() {
 }
 
 .post-actions {
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .see-more-button {
@@ -116,9 +122,23 @@ function closeModal() {
   border: none;
   color: darkslategray;
   cursor: pointer;
-  margin-top: 10px;
-  margin-bottom: 25px;
-  margin-right: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.see-more-content {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-right: 40px;
+  color: #26303e;
+  font-weight: bold;
+}
+
+.icon {
+  margin-left: 20px;
 }
 
 .post-divider {
@@ -126,5 +146,10 @@ function closeModal() {
   height: 1px;
   background: #ccc;
   margin: 0;
+}
+.post-content {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
 }
 </style>

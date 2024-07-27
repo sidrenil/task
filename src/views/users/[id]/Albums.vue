@@ -1,14 +1,13 @@
 <template>
-  <div class="p-5 ml-5">
-    <GoBackHome />
-
+  <GoBackHome />
+  <div class="pt-4 ml-5">
     <div v-if="albums.length === 0" class="text-gray-600">
       No albums available.
     </div>
 
     <div v-else>
       <div
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 pt-4"
       >
         <router-link
           :to="{
@@ -17,13 +16,11 @@
           }"
           v-for="album in albums"
           :key="album.id"
-          class="album-card border border-graylight hover:shadow-2xl duration-300 rounded-xl p-6 space-y-4 flex flex-col"
+          class="album-card border border-graylight hover:shadow-2xl duration-300 rounded-xl p-4 space-y-1 flex flex-col"
         >
           <div class="relative flex flex-col h-full">
-            <div class="relative w-full h-48 bg-gray-200 overflow-hidden">
-              <div
-                class="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1 p-1"
-              >
+            <div class="relative w-full h-48 overflow-hidden">
+              <div class="absolute inset-0 grid grid-cols-2 grid-rows-2 p-1">
                 <img
                   v-for="photo in getAlbumPhotos(album.id)"
                   :key="photo.id"
@@ -33,8 +30,8 @@
                 />
               </div>
             </div>
-            <div class="p-4 bg-white flex flex-col justify-center">
-              <h2 class="font-bold text-lg text-blackgray">
+            <div class="p-1 bg-white flex flex-col justify-center flex-grow">
+              <h2 class="text-sm text-blackgray">
                 {{ album.title }}
               </h2>
             </div>
@@ -82,7 +79,7 @@ function getAlbumPhotos(albumId) {
 
 <style scoped>
 .album-card {
-  height: 350px;
+  height: 290px;
 }
 
 .album-card img {
