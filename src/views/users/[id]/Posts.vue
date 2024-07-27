@@ -105,6 +105,7 @@ function closeModal() {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: #26303e;
 }
 
 .post-body {
@@ -116,6 +117,9 @@ function closeModal() {
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
+  display: box;
+  box-orient: vertical;
+  line-clamp: 4;
 }
 
 .post-actions {

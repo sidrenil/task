@@ -2,7 +2,7 @@
   <div
     class="go flex items-center bg-white text-darkslategray px-4 py-2 rounded-lg transition duration-300 text-2xl font-extrabold"
   >
-    <button @click="goHome" class="">
+    <button @click="goHome">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="icon icon-tabler icon-tabler-crop-1-1 mr-7"
@@ -23,7 +23,7 @@
         <path d="M8 12h8" />
       </svg>
     </button>
-    Go Home
+    <span class="text-home-color">Go Home</span>
   </div>
 </template>
 
@@ -37,4 +37,8 @@ function goHome() {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.text-home-color {
+  color: #26303e;
+}
+</style>

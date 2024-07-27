@@ -17,7 +17,7 @@
         class="w-12 h-12 rounded-full mr-4"
       />
       <div class="user-info">
-        <div class="text-sm font-bold">{{ user.name }}</div>
+        <div class="username text-sm font-bold">{{ user.name }}</div>
         <div class="text-gray-600 email text-sm">{{ user.email }}</div>
       </div>
     </div>
@@ -242,5 +242,8 @@ hr {
   font-size: 20px;
   color: #6b7280;
   font-weight: bold;
+}
+.username {
+  color: #26303e;
 }
 </style>
