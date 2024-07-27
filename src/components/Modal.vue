@@ -34,8 +34,15 @@
           </div>
           <div v-else>
             <div v-for="comment in comments" :key="comment.id" class="comment">
-              <h3 class="comment-name">{{ comment.name }}</h3>
-              <p class="comment-body">{{ comment.body }}</p>
+              <img
+                :src="comment.profilePicture"
+                alt="profile"
+                class="comment-avatar"
+              />
+              <div class="comment-info">
+                <h3 class="comment-name">{{ comment.name }}</h3>
+                <p class="comment-body">{{ comment.body }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -65,7 +72,10 @@ watch(
         const response = await axios.get(
           `https://jsonplaceholder.typicode.com/posts/${newPost.id}/comments`
         );
-        comments.value = response.data;
+        comments.value = response.data.map((comment) => ({
+          ...comment,
+          profilePicture: "https://via.placeholder.com/50",
+        }));
       } catch (error) {
         console.error("Error fetching comments:", error);
       }
@@ -129,7 +139,6 @@ function close() {
   height: calc(70vh - 40px);
   overflow: hidden;
 }
-
 .post-section,
 .comments-section {
   padding: 10px;
@@ -172,20 +181,6 @@ function close() {
   margin-left: 10px;
 }
 
-.comment {
-  margin-bottom: 10px;
-}
-
-.comment-name {
-  font-size: 1.125rem;
-  font-weight: bold;
-}
-
-.comment-body {
-  font-size: 1rem;
-  color: #555;
-}
-
 .post-section::-webkit-scrollbar,
 .comments-section::-webkit-scrollbar {
   width: 8px;
@@ -205,5 +200,39 @@ function close() {
 .post-section::-webkit-scrollbar-track,
 .comments-section::-webkit-scrollbar-track {
   background: #f1f1f1;
+}
+
+.comment {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.comment-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.comment-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-name {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.comment-body {
+  font-size: 1rem;
+  color: #555;
+  max-width: 350px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  margin-bottom: 10px;
 }
 </style>
