@@ -3,7 +3,7 @@
     <div
       class="go flex items-center bg-white text-darkslategray px-4 py-2 rounded-lg transition duration-300 text-2xl font-extrabold"
     >
-      <button @click="goHome" class="">
+      <button @click="goAlbums" class="">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="icon icon-tabler icon-tabler-crop-1-1 mr-7"
