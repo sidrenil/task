@@ -91,9 +91,15 @@
         v-if="user"
         :to="{ name: 'Albums', params: { id: user.id } }"
         class="link-item"
-        :class="{ 'bg-white': $route.name === 'Albums' }"
+        :class="{
+          'bg-white':
+            $route.name === 'Albums' || $route.name === 'UserAlbumPhotos',
+        }"
       >
-        <div v-if="$route.name === 'Albums'" class="active-indicator"></div>
+        <div
+          v-if="$route.name === 'Albums' || $route.name === 'UserAlbumPhotos'"
+          class="active-indicator"
+        ></div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="icon icon-tabler icon-tabler-photo-heart mr-2"
