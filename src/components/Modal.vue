@@ -36,7 +36,7 @@
           <div v-else>
             <div v-for="comment in comments" :key="comment.id" class="comment">
               <img
-                :src="comment.profilePicture"
+                src="../img/image.png"
                 alt="profile"
                 class="comment-avatar"
               />
@@ -51,6 +51,7 @@
     </div>
   </div>
 </template>
+
 <script setup>
 import { ref, watch } from "vue";
 import axios from "axios";
@@ -75,7 +76,7 @@ watch(
         );
         comments.value = response.data.map((comment) => ({
           ...comment,
-          profilePicture: "https://via.placeholder.com/50",
+          profilePicture: "../img/image.png",
         }));
       } catch (error) {
         console.error("Error fetching comments:", error);
