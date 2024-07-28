@@ -11,7 +11,7 @@
       <div v-if="todos.length === 0" class="text-gray-600"></div>
 
       <ul v-else>
-        <li v-for="todo in todos" :key="todo.id" class="mb-2 ml-5 mt-6 pt-3">
+        <li v-for="todo in todos" :key="todo.id" class="mb-2 ml-5 mt-6 pt-6">
           <input
             type="checkbox"
             :id="'todo-' + todo.id"
