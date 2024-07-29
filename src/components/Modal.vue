@@ -228,9 +228,7 @@ function close() {
 .comment-info {
   display: flex;
   flex-direction: column;
-  max-width: calc(
-    100% - 65px
-  ); /* Ensures the comment content adjusts with the avatar */
+  max-width: calc(100% - 65px);
 }
 
 .comment-name {
