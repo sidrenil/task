@@ -10,21 +10,21 @@
         class="border border-graylight hover:shadow-2xl duration-300 rounded-xl p-6 space-y-4 flex flex-col"
       >
         <div class="flex flex-col lg:flex-row lg:space-x-4">
-          <div class="overflow-hidden rounded-full mb-2">
+          <div class="flex-shrink-0 mb-2 lg:mb-0">
             <img
               :src="`https://i.pravatar.cc/150?img=${user.id}`"
               alt="User avatar"
               class="w-16 h-16 rounded-full"
             />
           </div>
-          <div class="flex flex-col justify-center">
-            <p class="font-medium text-lg text-blackgray">{{ user.name }}</p>
-            <p
-              class="text-gray text-[15px] xl:text-sm font-normal overflow-hidden"
-            >
+          <div class="flex-1 flex flex-col justify-center">
+            <p class="font-extrabold text-blackgray text-xs text-custom-name">
+              {{ user.name }}
+            </p>
+            <p class="text-xs font-normal overflow-hidden text-custom-email">
               {{ user.email }}
             </p>
-            <p class="text-gray text-[15px] xl:text-sm font-normal">
+            <p class="text-xs font-normal text-custom-phone">
               {{ user.phone }}
             </p>
           </div>
@@ -35,9 +35,7 @@
             <div class="flex items-center space-x-2 text-black">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="icon icon-tabler icon-tabler-map-pin-heart"
-                width="24"
-                height="24"
+                class="icon icon-tabler icon-tabler-map-pin-heart w-4 h-4"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="#000000"
@@ -54,11 +52,10 @@
                   d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z"
                 />
               </svg>
-
-              <span class="font-medium text-sm text-black">Location</span>
+              <span class="font-medium text-xs text-black">Location</span>
             </div>
 
-            <div class="text-light-gray font-light flex flex-col text-sm">
+            <div class="text-light-gray font-light flex flex-col text-xs">
               <div>{{ user.address.street }}, {{ user.address.suite }}</div>
               <div>{{ user.address.city }}, {{ user.address.zipcode }}</div>
             </div>
@@ -67,9 +64,7 @@
             <div class="flex items-center space-x-2 text-black">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="icon icon-tabler icon-tabler-building-skyscraper"
-                width="24"
-                height="24"
+                class="icon icon-tabler icon-tabler-building-skyscraper w-4 h-4"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="#000000"
@@ -86,9 +81,9 @@
                 <path d="M9 15l0 .01" />
                 <path d="M9 18l0 .01" />
               </svg>
-              <span class="font-medium text-sm text-black">Company</span>
+              <span class="font-medium text-xs text-black">Company</span>
             </div>
-            <div class="text-light-gray font-light flex flex-col text-sm">
+            <div class="text-light-gray font-light flex flex-col text-xs">
               {{ user.company.name }}
             </div>
           </div>
@@ -96,9 +91,7 @@
             <div class="flex items-center space-x-2 text-black">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="icon icon-tabler icon-tabler-world-share"
-                width="24"
-                height="24"
+                class="icon icon-tabler icon-tabler-world-share w-4 h-4"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="#000000"
@@ -115,9 +108,9 @@
                 <path d="M16 22l5 -5" />
                 <path d="M21 21.5v-4.5h-4.5" />
               </svg>
-              <span class="font-medium text-sm text-black">Website</span>
+              <span class="font-medium text-xs text-black">Website</span>
             </div>
-            <div class="text-light-gray font-light flex flex-col text-sm">
+            <div class="text-light-gray font-light flex flex-col text-xs">
               {{ user.website }}
             </div>
           </div>
@@ -147,6 +140,15 @@ onMounted(() => {
 
 <style>
 .text-light-gray {
+  color: gray;
+}
+.text-custom-name {
+  color: #26303e;
+}
+.text-custom-email {
+  color: gray;
+}
+.text-custom-phone {
   color: gray;
 }
 </style>
