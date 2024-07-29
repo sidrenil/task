@@ -92,6 +92,7 @@ function close() {
   emits("close");
 }
 </script>
+
 <style scoped>
 .modal-overlay {
   position: fixed;
@@ -141,7 +142,9 @@ function close() {
   width: 100%;
   height: calc(70vh - 40px);
   overflow: hidden;
+  flex-direction: row;
 }
+
 .post-section,
 .comments-section {
   padding: 10px;
@@ -157,9 +160,11 @@ function close() {
 
 .comments-section {
   width: 40%;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
   margin-top: 20px;
+  max-height: 100%;
+  overflow-y: auto;
 }
 
 .section-title {
@@ -210,6 +215,7 @@ function close() {
   align-items: flex-start;
   margin-bottom: 20px;
   padding: 10px;
+  flex-wrap: wrap;
 }
 
 .comment-avatar {
@@ -222,6 +228,9 @@ function close() {
 .comment-info {
   display: flex;
   flex-direction: column;
+  max-width: calc(
+    100% - 65px
+  ); /* Ensures the comment content adjusts with the avatar */
 }
 
 .comment-name {
@@ -233,7 +242,7 @@ function close() {
 .comment-body {
   font-size: 1rem;
   color: #555;
-  max-width: 350px;
+  max-width: 100%;
   overflow-wrap: break-word;
   word-break: break-word;
   margin-bottom: 10px;
@@ -261,6 +270,24 @@ function close() {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    flex-direction: column;
+    max-height: 80vh;
+  }
+
+  .post-section,
+  .comments-section {
+    width: 100%;
+    border-right: none;
+    padding: 10px;
+  }
+
+  .comments-section {
+    margin-top: 0;
   }
 }
 </style>
