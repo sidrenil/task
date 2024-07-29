@@ -156,6 +156,7 @@ hr {
 .email {
   text-decoration: underline;
   overflow-wrap: break-word;
+  font-size: 13px;
 }
 
 .flex {
@@ -180,8 +181,8 @@ hr {
 }
 
 .user-image {
-  width: 48px;
-  height: 48px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   margin-right: 16px;
 }
@@ -286,10 +287,6 @@ hr {
 
   .username {
     font-size: 14px;
-  }
-
-  .email {
-    font-size: 12px;
   }
 
   .link-item {
