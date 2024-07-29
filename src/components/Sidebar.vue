@@ -1,6 +1,6 @@
 <template>
   <div
-    class="pt-6 bg-gray-100 w-64 h-screen border-r border-gray-200"
+    class="pt-6 bg-gray-100 w-64 h-screen border-r border-gray-200 sidebar"
     style="
       position: sticky;
       top: 0;
@@ -48,6 +48,10 @@
 </template>
 
 <style scoped>
+.sidebar {
+  width: 16rem;
+}
+
 .sidebar-bottom {
   margin-top: auto;
   padding: 10px 20px;
@@ -120,5 +124,17 @@
 }
 .user {
   color: #4f359b;
+}
+
+@media (max-width: 640px) {
+  .sidebar {
+    width: 8rem;
+  }
+  .text-md {
+    font-size: 16px;
+  }
+  .sidebar-text {
+    font-size: 18px;
+  }
 }
 </style>

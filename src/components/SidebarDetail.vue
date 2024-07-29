@@ -1,6 +1,6 @@
 <template>
   <div
-    class="pt-6 bg-gray-100 w-64 h-screen border-r border-gray-200"
+    class="pt-6 bg-gray-100 sidebar w-64 h-screen border-r border-gray-200"
     style="
       position: sticky;
       top: 0;
@@ -10,11 +10,11 @@
       flex-direction: column;
     "
   >
-    <div v-if="user" class="flex items-center mb-4 px-5">
+    <div v-if="user" class="flex items-center mb-4 px-5 user-container">
       <img
         :src="`https://i.pravatar.cc/150?img=${user.id}`"
         alt="User avatar"
-        class="w-12 h-12 rounded-full mr-4"
+        class="w-12 h-12 rounded-full mr-4 user-image"
       />
       <div class="user-info">
         <div class="username text-sm font-bold">{{ user.name }}</div>
@@ -175,6 +175,31 @@ hr {
   white-space: normal;
 }
 
+.user-container {
+  position: relative;
+}
+
+.user-image {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
+@media (max-width: 640px) {
+  .user-info {
+    display: none;
+  }
+  .sidebar {
+    width: 8rem;
+  }
+
+  .user-image {
+    width: 60px;
+    margin-left: 30px;
+  }
+}
+
 .link-item {
   display: flex;
   align-items: center;
@@ -249,7 +274,35 @@ hr {
   color: #6b7280;
   font-weight: bold;
 }
+
 .username {
   color: #26303e;
+}
+
+@media (max-width: 640px) {
+  .sidebar {
+    width: 8rem;
+  }
+
+  .username {
+    font-size: 14px;
+  }
+
+  .email {
+    font-size: 12px;
+  }
+
+  .link-item {
+    padding: 8px 12px;
+    padding-left: 24px;
+  }
+
+  .sidebar-text {
+    font-size: 16px;
+  }
+
+  .sidebar-image {
+    width: 32px;
+  }
 }
 </style>
