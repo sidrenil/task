@@ -55,7 +55,7 @@
           <path d="M9 17h.01" />
           <path d="M12 16l1 1l3 -3" />
         </svg>
-        Todos
+        <span class="link-text">Todos</span>
       </router-link>
 
       <router-link
@@ -84,7 +84,7 @@
           <path d="M13 8l2 0" />
           <path d="M13 12l2 0" />
         </svg>
-        Posts
+        <span class="link-text">Posts</span>
       </router-link>
 
       <router-link
@@ -122,7 +122,7 @@
             d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z"
           />
         </svg>
-        Albums
+        <span class="link-text">Albums</span>
       </router-link>
     </div>
 
@@ -181,24 +181,10 @@ hr {
 }
 
 .user-image {
-  width: 60px;
-  height: 60px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   margin-right: 16px;
-}
-
-@media (max-width: 640px) {
-  .user-info {
-    display: none;
-  }
-  .sidebar {
-    width: 8rem;
-  }
-
-  .user-image {
-    width: 60px;
-    margin-left: 30px;
-  }
 }
 
 .link-item {
@@ -282,24 +268,54 @@ hr {
 
 @media (max-width: 640px) {
   .sidebar {
-    width: 8rem;
+    width: 3rem;
+    overflow: hidden;
   }
 
-  .username {
-    font-size: 14px;
+  .user-info {
+    display: none;
+  }
+
+  .user-container {
+    padding: 8px;
+    justify-content: center;
+  }
+
+  .user-image {
+    width: 48px;
+    height: 48px;
+    margin-left: 7px;
   }
 
   .link-item {
-    padding: 8px 12px;
-    padding-left: 24px;
+    padding: 8px 10px;
+    padding-left: 16px;
+    font-size: 1.5rem;
+    justify-content: center;
   }
 
-  .sidebar-text {
-    font-size: 16px;
+  .link-item .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .sidebar-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
   }
 
   .sidebar-image {
-    width: 32px;
+    width: 24px;
+  }
+
+  .sidebar-text {
+    display: none;
+  }
+
+  .link-text {
+    display: none;
   }
 }
 </style>

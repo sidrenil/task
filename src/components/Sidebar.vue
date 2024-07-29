@@ -122,19 +122,36 @@
   font-size: 18px;
   font-weight: bold;
 }
+
 .user {
   color: #4f359b;
 }
 
 @media (max-width: 640px) {
   .sidebar {
-    width: 8rem;
+    width: 3rem;
+    overflow: hidden;
   }
-  .text-md {
-    font-size: 16px;
+
+  .user {
+    display: none;
   }
+
   .sidebar-text {
-    font-size: 18px;
+    display: none;
+  }
+
+  .sidebar-content {
+    justify-content: center;
+  }
+
+  .sidebar-image {
+    width: 24px;
+  }
+
+  .sidebar-link {
+    padding: 8px 0;
+    justify-content: center;
   }
 }
 </style>
